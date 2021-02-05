@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: mongo:latest
+    restart: always
+    container_name: db
+    environment:
+      - MONGO_INITDB_DATABASE=stonks
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASS}
+    ports:
+      - '27017-27019:27017-27019'
+
+  scraper:
+    container_name: scraper
+    build: ./scraper
+    depends_on:
+      - db
+  simulations:
+    container_name: simulations
+    build: ./simulations
+    depends_on:
+      - db
