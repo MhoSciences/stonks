@@ -35,3 +35,8 @@ You can run those two interactively with the following commands:
     docker run -it stonks_scraper bash
     docker run -it stonks_simulations bash
 
+To run `db` interactively use the following:
+
+    docker run -it db bash
+
+
